@@ -3,30 +3,38 @@
 
 using namespace std;
 
+/* The DataManager class stores all critical data recieved from input files and
+ * calculates all statistics.
+*/
 class DataManager {
 
     public:
         DataManager(); // default constructor
         ~DataManager(); // destructor
 
+        // calculations
         void calculateMean(int lengthSum, int lineCount);
         void calculateVarianceAndStdDev(float varianceSum);
-
-        void processString(string dnaString);
-
-        void addNucleotide(char nucleotide);
-        void addBigram(char nucleotide1, char nucleotide2);
         void calculateProbability();
 
+        // processes DNA and saves to nucleotide/bigram member variables
+        void processString(string dnaString);
+        void addNucleotide(char nucleotide);
+        void addBigram(char nucleotide1, char nucleotide2);
+
+        // returns statistic summary of file
         string getOutput();
 
+        // DNA generation methods
         int getGaussianDistribution();
         char generateNucleotide();
 
+        // accessors
         float getMean();
 
     private:
 
+        // DNA statistics
         int lineCount;
         int lengthSum;
         float mean;
@@ -34,14 +42,17 @@ class DataManager {
         float variance;
         float stdDev;
 
+        // total nucleotide and bigram counts
         int totalNucleotides;
         int totalBigrams;
 
+        // singular nucleotide counts
         int countA;
         int countC;
         int countT;
         int countG;
 
+        // nucleotide bigram counts
         int countAA;
         int countAC;
         int countAT;
@@ -59,11 +70,13 @@ class DataManager {
         int countGT;
         int countGG;
 
+        // singular nucleotide probabilities
         float probA;
         float probC;
         float probT;
         float probG;
 
+        // nucleotide bigram probabilities
         float probAA;
         float probAC;
         float probAT;

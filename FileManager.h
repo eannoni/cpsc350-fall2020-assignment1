@@ -4,6 +4,9 @@
 
 using namespace std;
 
+/* The FileManager class is in charge of reading from .txt files containing
+ * multiple strings of nucleotides, and writes data from DataManager to a new file.
+*/
 class FileManager {
 
     public:
